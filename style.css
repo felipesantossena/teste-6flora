@@ -1,0 +1,427 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(180deg, #0b7a2a, #1fa34a);
+    color: white;
+}
+
+/* NAVBAR */
+
+.navbar {
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 40px;
+
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+
+    z-index: 1000;
+
+}
+
+.logo img{
+
+height:80px;
+
+animation:logoFloat 4s ease-in-out infinite;
+
+}
+
+@keyframes logoFloat{
+
+0%{transform:translateY(0px);}
+
+50%{transform:translateY(-5px);}
+
+100%{transform:translateY(0px);}
+
+}
+
+.slogan{
+
+font-size:18px;
+font-weight:bold;
+
+background:linear-gradient(
+90deg,
+#ffffff 0%,
+#ffffff 40%,
+#32ff7e 50%,
+#ffffff 60%,
+#ffffff 100%
+);
+
+background-size:200%;
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:brilho 4s linear infinite;
+
+}
+
+@keyframes brilho{
+
+0%{
+background-position:200%;
+}
+
+100%{
+background-position:-200%;
+}
+
+}
+
+
+
+.floratxt{
+
+position:relative;
+font-size:70px;
+font-weight:bold;
+color:transparent;
+-webkit-text-stroke:2px white;
+
+}
+
+/* camada que será preenchida */
+
+.floratxt::before{
+
+content:attr(data-text);
+
+position:absolute;
+left:0;
+bottom:0;
+
+width:100%;
+height:0%;
+
+color:#302402;
+
+overflow:hidden;
+
+animation:encher 3s ease forwards;
+
+}
+
+/* animação subindo */
+
+@keyframes encher{
+
+0%{
+height:0%;
+}
+
+100%{
+height:100%;
+}
+
+}
+
+
+/* MENU */
+
+.nav-links {
+
+    display: flex;
+    gap: 30px;
+    list-style: none;
+
+}
+
+.nav-links a {
+
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+/* BOTÃO CLIENTES */
+
+/* BOTÕES MENU */
+
+.btn-home,
+.btn-clientes,
+.btn-sobre{
+
+position:relative;
+
+background:#483111;
+padding:8px 18px;
+
+border-radius:20px;
+
+color:white;
+
+overflow:hidden;
+
+display:inline-block;
+
+transition:color 0.4s;
+
+z-index:1;
+
+}
+
+/* camada do líquido */
+
+.btn-home::before,
+.btn-clientes::before,
+.btn-sobre::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:0;
+
+width:100%;
+height:0%;
+
+background:linear-gradient(180deg,#32ff7e,#1fa34a);
+
+border-radius:20px;
+
+transition:height 0.4s ease;
+
+z-index:-1;
+
+}
+
+/* efeito hover */
+
+.btn-home:hover::before,
+.btn-clientes:hover::before,
+.btn-sobre:hover::before{
+
+height:100%;
+
+}
+
+.btn-home:hover,
+.btn-clientes:hover,
+.btn-sobre:hover{
+
+color:black;
+
+}
+
+/* MENU MOBILE */
+
+.menu-toggle {
+
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+
+}
+
+/* SEÇÕES */
+
+section {
+
+    min-height: 100vh;
+    padding: 120px 40px;
+
+}
+
+/* HOME */
+
+.home {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.home h1 {
+
+    font-size: 60px;
+
+}
+
+/* CLIENTES */
+
+.clientes {
+
+    text-align: center;
+
+}
+
+.clientes-container {
+
+    margin-top: 40px;
+
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+
+}
+
+/* CARDS */
+
+.card {
+
+    width: 250px;
+
+    background: white;
+    color: black;
+
+    border-radius: 15px;
+    overflow: hidden;
+
+    text-decoration: none;
+
+    transition: 0.4s;
+
+}
+
+.card img {
+
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+
+}
+
+.card h3 {
+
+    padding: 20px;
+
+}
+
+.card:hover {
+
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+
+}
+
+/* SOBRE */
+
+.sobre {
+
+    text-align: center;
+
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width:768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+
+        position: absolute;
+
+        top: 70px;
+        right: 0;
+
+        background: #0a5a21;
+
+        flex-direction: column;
+
+        width: 200px;
+
+        display: none;
+
+        padding: 20px;
+
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .home h1 {
+        font-size: 40px;
+    }
+
+}
+
+.dropdown{
+position:relative;
+}
+
+.dropdown-menu{
+
+position:absolute;
+top:40px;
+left:0;
+
+background:#0a5a21;
+
+list-style:none;
+
+padding:15px;
+
+border-radius:10px;
+
+display:none;
+
+min-width:220px;
+
+}
+
+.dropdown:hover .dropdown-menu{
+
+display:block;
+
+}
+
+.dropdown-menu a{
+
+color:white;
+text-decoration:none;
+
+display:block;
+
+padding:6px;
+
+border-radius:5px;
+
+}
+
+.dropdown-menu a:hover{
+
+background:#1fa34a;
+
+}
+
+.titulo{
+
+font-weight:bold;
+margin-top:8px;
+margin-bottom:5px;
+
+color:#32ff7e;
+
+}
+

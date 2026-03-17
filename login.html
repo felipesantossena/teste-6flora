@@ -1,0 +1,88 @@
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login - Florá</title>
+
+<style>
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(180deg,#0b7a2a,#1fa34a);
+font-family:Arial;
+}
+
+.login{
+
+background:white;
+padding:40px;
+border-radius:15px;
+width:300px;
+text-align:center;
+}
+
+input{
+
+width:100%;
+padding:10px;
+margin:10px 0;
+
+}
+
+button{
+
+width:100%;
+padding:10px;
+background:#1fa34a;
+color:white;
+border:none;
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login">
+
+<h2>Login</h2>
+
+<input type="text" id="usuario" placeholder="Usuário">
+
+<input type="password" id="senha" placeholder="Senha">
+
+<button onclick="entrar()">Entrar</button>
+
+</div>
+
+<script>
+
+function entrar(){
+
+let usuario = document.getElementById("usuario").value;
+let senha = document.getElementById("senha").value;
+
+if(usuario === "admin" && senha === "#5MemP7Q"){
+
+window.location.href = "index.html";
+
+}else{
+
+alert("Usuário ou senha incorretos");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

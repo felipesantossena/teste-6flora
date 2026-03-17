@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Governodopara</title>
+
+    <link rel="stylesheet" href="clientes.css">
+
+</head>
+
+<body>
+
+    <h1 class="titulo">Governodopara</h1>
+
+    <div class="menu">
+
+        <button class="menu-botao" onclick="mostrarTabela('contratos')">
+            Planejamento de contratos
+        </button>
+
+        <button class="menu-botao" onclick="mostrarTabela('pagamentos')">
+            Planejamento de pagamentos
+        </button>
+
+        <button class="menu-botao" onclick="mostrarTabela('campanhas')">
+            Resultado de campanhas
+        </button>
+
+        <button class="menu-botao" onclick="mostrarTabela('coleta')">
+            Resultado de coleta
+        </button>
+
+        <button class="menu-botao" onclick="mostrarTabela('consultores')">
+            Consultores responsáveis
+        </button>
+
+    </div>
+
+    <div class="area-conteudo" id="conteudo"></div>
+
+    <script>
+
+        function mostrarTabela(tipo) {
+
+            let conteudo = document.getElementById("conteudo");
+
+            if (tipo === "contratos") {
+
+                conteudo.innerHTML = `
+
+<h2 class="subtitulo">Planejamento de contratos</h2>
+
+<table class="tabela">
+
+<tr>
+<th>Itens</th>
+<th>Diárias e Produtos</th>
+<th>Valor p/ Campanha</th>
+<th>Campanha</th>
+</tr>
+
+<tr><td>Herpetologo</td><td>8</td><td></td><td>0</td></tr>
+<tr><td>Alimentação</td><td>8</td><td></td><td>0</td></tr>
+<tr><td>Relatório</td><td>1</td><td></td><td>0</td></tr>
+
+<tr><td>Ornitologo</td><td>6</td><td></td><td>0</td></tr>
+<tr><td>Alimentação</td><td>6</td><td></td><td>0</td></tr>
+<tr><td>Relatório</td><td>1</td><td></td><td>0</td></tr>
+
+<tr><td>Mastozoologo Terrestre</td><td>6</td><td></td><td>0</td></tr>
+<tr><td>Alimentação</td><td>6</td><td></td><td>0</td></tr>
+<tr><td>Relatório</td><td>1</td><td></td><td>0</td></tr>
+
+<tr><td>Mastozoologo (Morcegos)</td><td>6</td><td></td><td>0</td></tr>
+<tr><td>Relatório</td><td>1</td><td></td><td>0</td></tr>
+
+<tr><td>Entomólogo</td><td>8</td><td></td><td>0</td></tr>
+<tr><td>Alimentação</td><td>6</td><td></td><td>0</td></tr>
+<tr><td>Relatório</td><td>1</td><td></td><td>2250</td></tr>
+
+<tr><td>Auxliar 1</td><td>7</td><td></td><td>0</td></tr>
+<tr><td>Alimentação</td><td>7</td><td></td><td>0</td></tr>
+
+<tr><td>Auxliar 2</td><td>7</td><td></td><td>0</td></tr>
+<tr><td>Alimentação</td><td>7</td><td></td><td>0</td></tr>
+
+<tr><td>EPI´s</td><td>1</td><td></td><td>0</td></tr>
+<tr><td>Material de Manejo</td><td>1</td><td></td><td>0</td></tr>
+
+<tr><td>Carro (1)</td><td>8</td><td></td><td>0</td></tr>
+<tr><td>Carro (2)</td><td>6</td><td></td><td>0</td></tr>
+
+<tr><td>Combustivel (Carro 1)</td><td>1</td><td></td><td>0</td></tr>
+<tr><td>Combustivel (Carro 2)</td><td>1</td><td></td><td>0</td></tr>
+
+<tr><td>Aluguel Casa (Fauna Completa)</td><td>8</td><td></td><td>4000</td></tr>
+
+</table>
+`;
+
+            }
+
+            if (tipo === "pagamentos") {
+                conteudo.innerHTML = `<h2 class="subtitulo">Planejamentos de pagamentos</h2>
+                <table class="tabela">
+
+<tr>
+<th>Projeto</th>
+<td colspan="14"></td>
+</tr>
+
+<tr>
+<th>Contrato</th>
+<td colspan="14"></td>
+</tr>
+
+<tr>
+<th>Início do Contrato</th>
+<td colspan="14"></td>
+</tr>
+
+<tr>
+<th>Término do Contrato</th>
+<td colspan="14"></td>
+</tr>
+
+<tr>
+<th>Parcelas de Pagamento</th>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+</tr>
+
+<tr>
+<th>Data da Geração da Nota</th>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+</tr>
+
+<tr>
+<th>Valor</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<th>Previsão de Pagamento</th>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+<td>--/--/----</td>
+</tr>
+
+<tr>
+<th>OBS</th>
+<td colspan="14"></td>
+</tr>
+
+</table>
+
+
+                `;
+            }
+
+            if (tipo === "campanhas") {
+                conteudo.innerHTML = `<h2 class="subtitulo">Resultado de campanhas</h2>`;
+            }
+
+            if (tipo === "coleta") {
+                conteudo.innerHTML = `<h2 class="subtitulo">Resultado de coleta</h2>`;
+            }
+
+            if (tipo === "consultores") {
+                conteudo.innerHTML = `<h2 class="subtitulo">Consultores responsáveis</h2>`;
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
