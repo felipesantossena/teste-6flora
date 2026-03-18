@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governodopara</title>
+
+    <link rel="stylesheet" href="clientes.css">
+</head>
+
+<body>
+
+    <h1 class="titulo">Governodopara</h1>
+
+    <div class="menu">
+        <button onclick="mostrarTabela('contratos')">Planejamento de contratos</button>
+        <button onclick="mostrarTabela('pagamentos')">Planejamento de pagamentos</button>
+        <button onclick="mostrarTabela('campanhas')">Resultado de campanhas</button>
+        <button onclick="mostrarTabela('coleta')">Resultado de coleta</button>
+        <button onclick="mostrarTabela('consultores')">Consultores responsáveis</button>
+    </div>
+
+    <!-- BOTÕES -->
+    <div class="acoes">
+        <button onclick="salvarDados()">💾 Salvar</button>
+        <button onclick="exportarExcel()">📊 Exportar Excel</button>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div id="conteudo"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+//
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.menu {
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 8px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela th, .tabela td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+td:focus {
+    outline: 2px solid #4CAF50;
+    background-color: #f0fff0;
+}
+
+.acoes {
+    margin: 10px 0;
+}
+
+//
+
+let tipoAtual = "";
+
+// MOSTRAR TABELA
+function mostrarTabela(tipo) {
+
+    tipoAtual = tipo;
+
+    let conteudo = document.getElementById("conteudo");
+
+    if (tipo === "contratos") {
+        conteudo.innerHTML = `
+        <h2>Planejamento de contratos</h2>
+
+        <table class="tabela">
+        <tr>
+        <th>Itens</th>
+        <th>Diárias</th>
+        <th>Valor</th>
+        <th>Campanha</th>
+        </tr>
+
+        <tr><td>Herpetologo</td><td>8</td><td></td><td>0</td></tr>
+        <tr><td>Alimentação</td><td>8</td><td></td><td>0</td></tr>
+        <tr><td>Relatório</td><td>1</td><td></td><td>0</td></tr>
+        </table>
+        `;
+    }
+
+    if (tipo === "pagamentos") {
+        conteudo.innerHTML = `
+        <h2>Planejamento de pagamentos</h2>
+
+        <table class="tabela">
+        <tr>
+        <th>Projeto</th>
+        <td colspan="5"></td>
+        </tr>
+
+        <tr>
+        <th>Parcelas</th>
+        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+
+        <tr>
+        <th>Valor</th>
+        <td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        </table>
+        `;
+    }
+
+    if (tipo === "campanhas") {
+        conteudo.innerHTML = `<h2>Resultado de campanhas</h2>`;
+    }
+
+    if (tipo === "coleta") {
+        conteudo.innerHTML = `<h2>Resultado de coleta</h2>`;
+    }
+
+    if (tipo === "consultores") {
+        conteudo.innerHTML = `<h2>Consultores responsáveis</h2>`;
+    }
+
+    // TORNA EDITÁVEL
+    let tds = conteudo.querySelectorAll("td");
+    tds.forEach(td => {
+        td.setAttribute("contenteditable", "true");
+    });
+
+    // CARREGA DADOS
+    carregarDados(tipo);
+}
+
+// SALVAR
+function salvarDados() {
+    let conteudo = document.getElementById("conteudo").innerHTML;
+    localStorage.setItem(tipoAtual, conteudo);
+    alert("Dados salvos!");
+}
+
+// CARREGAR
+function carregarDados(tipo) {
+    let dados = localStorage.getItem(tipo);
+
+    if (dados) {
+        document.getElementById("conteudo").innerHTML = dados;
+    }
+}
+
+// EXPORTAR EXCEL
+function exportarExcel() {
+    let tabela = document.querySelector("table");
+
+    if (!tabela) {
+        alert("Nenhuma tabela encontrada!");
+        return;
+    }
+
+    let html = tabela.outerHTML;
+
+    let blob = new Blob([html], { type: "application/vnd.ms-excel" });
+    let url = URL.createObjectURL(blob);
+
+    let a = document.createElement("a");
+    a.href = url;
+    a.download = "tabela.xls";
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+
+
+
